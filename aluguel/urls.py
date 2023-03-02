@@ -16,11 +16,29 @@ Including another URLconf
 
 
 from django.urls import path
-from aluguel.views import listar_carro
+from aluguel.views import listar_carro,cadastrar_carro,atualizar_carro,deletar_carro,detalhar_carro
 
 
 
 urlpatterns = [
     path('carro/',listar_carro,name='listar_carros' ),
-    path('carro/',listar_carro,name='listar_carros' ),
+    path('carro/<int:pk>',detalhar_carro,name='detalhar_carros' ),
+    path('carro/cadastrar',cadastrar_carro,name='cadastrar_carro' ),
+    path('carro/atualizar/<int:pk>',atualizar_carro,name='atualizar_carro' ),
+    path('carro/deletrar/<int:pk>',deletar_carro,name='deletar_carro' ),
+   
+    path('cliente/',listar_carro,name='listar_cliente' ),
+    path('cliente/<int:pk>',listar_carro,name='detalhar_cliente' ),
+    path('cliente/cadastrar',listar_carro,name='cadastrar_cliente' ),
+    path('cliente/atualizar/<int:pk>',listar_carro,name='atualizar_cliente' ),
+    path('cliente/deletrar/<int:pk>',listar_carro,name='deletar_cliente' ),
+    
+    path('alugar/',listar_carro,name='listar_' ),
+    path('alugar/<int:pk>',listar_carro,name='detalhar_carros' ),
+    path('alugar/cadastrar',listar_carro,name='cadastrar_carro' ),
+    path('alugar/atualizar/<int:pk>',listar_carro,name='atualizar_carro' ),
+    path('alugar/deletrar/<int:pk>',listar_carro,name='deletar_carro' ),
+    
+    
+    
 ]
