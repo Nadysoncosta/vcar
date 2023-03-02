@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class Cliente(models.Model):
@@ -7,9 +8,10 @@ class Cliente(models.Model):
     telefone = models.IntegerField()
     data_nascimento=models.DateField()
     endereco = models.CharField(max_length=200)
-    #idade=pass
+    #idade=models.DateField(models.DateTimeField(auto_now_add=True)-data_nascimento)
+    #datetime.strptime(data_nascimento, '%d/%m/%Y').date()
     def __str__(self):
-        return self.nome
+        return "{} - {}".format(self.nome,self.cpf)
 
 class Carro(models.Model):
     placa = models.CharField(max_length=15,primary_key=True,unique=True)
@@ -18,11 +20,16 @@ class Carro(models.Model):
     data_compra = models.DateField()
     status = models.CharField(max_length=15)
     
+    def __str__(self):
+        return "{}-{}".format(self.modelo,self.ano)
 
 class Aluguel(models.Model):
-    codigo=models.CharField(max_length=15,primary_key=True, unique=True)
-    data_aluguel=models.DateField()
-    data_entrega=models.DateField()
+    codigo=models.AutoField(primary_key=True,unique=True)
+    data_aluguel=models.DateField(blank=True)
+    data_entrega=models.DateField(blank=True)
     diaria=models.DecimalField(max_digits = 10, decimal_places = 2)
     placa_carro=models.ForeignKey(Carro,on_delete=models.CASCADE)
     cpf_cliente=models.ForeignKey(Cliente,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.codigo
