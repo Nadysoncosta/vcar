@@ -1,9 +1,9 @@
-{% extends 'index.html' %}
+{% extends 'home.html' %}
 {% load bootstrap5 %}
     {% block title %}Aluguel SENAC - Atualizar Carro {% endblock title %}
     {% block content %}
     <h1>Aluguel SENAC</h1>
-    <h2>Atualizar Carro: {{ form.instance.nome}}</h2>
+    <h2>Atualizar Carro: {{ form.instance.carros}}</h2>
 
     <form method="POST">
     {% csrf_token %}

@@ -1,3 +1,14 @@
 {% extends 'home.html' %}
-    {% block title %}Aluguel SENAC - Carros{% endblock title %}
+    {% block title %}Carros{% endblock title %}
     {% block content %}
+    <h1>Lista de Carros</h1>
+    <h2>Carros:</h2>
+    <div class="d-flex justify-content-end">
+    <a class="btn btn-primary" href="{% url 'cadastrar_carro' %}" role="button">Cadastrar Carro</a>
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for carro in carros %}
+        <li class="list-group-item" ><a href="{% url 'detalhar_carro' carro.pk %}">{{carro.modelo}}</a></li>
+        {% endfor %}
+    </ul>
+    {% endblock content %}

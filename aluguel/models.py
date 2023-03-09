@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+# from datetime import datetime
 
 # Create your models here.
 class Cliente(models.Model):
@@ -14,7 +14,8 @@ class Cliente(models.Model):
         return "{} - {}".format(self.nome,self.cpf)
 
 class Carro(models.Model):
-    placa = models.CharField(max_length=15,primary_key=True,unique=True)
+    codigo =models.BigAutoField(primary_key=True,unique=True)
+    placa = models.CharField(max_length=15)
     ano = models.CharField(max_length=15)
     modelo = models.CharField(max_length=15)
     data_compra = models.DateField()
@@ -28,8 +29,8 @@ class Aluguel(models.Model):
     data_aluguel=models.DateField(blank=True)
     data_entrega=models.DateField(blank=True)
     diaria=models.DecimalField(max_digits = 10, decimal_places = 2)
-    placa_carro=models.ForeignKey(Carro,on_delete=models.CASCADE)
-    cpf_cliente=models.ForeignKey(Cliente,on_delete=models.CASCADE)
+    placa_carro=models.ForeignKey(Carro,on_delete=models.NOT_PROVIDED)
+    cpf_cliente=models.ForeignKey(Cliente,on_delete=models.NOT_PROVIDED)
 
     def __str__(self):
         return self.codigo
