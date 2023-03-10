@@ -1,4 +1,4 @@
-{% extends 'home.html' %}
+{% extends 'index.html' %}
     {% block title %}Carros{% endblock title %}
     {% block content %}
     <h1>Lista de Carros</h1>
@@ -8,7 +8,7 @@
     </div>
     <ul class="list-group list-group-flush">
         {% for carro in carros %}
-        <li class="list-group-item" ><a href="{% url 'detalhar_carro' carro.pk %}">{{carro.modelo}}</a></li>
+        <li class="list-group-item" ><a href="{% url 'detalhar_carro' carros.pk %}">{{carro.modelo}}</a></li>
         {% endfor %}
     </ul>
     {% endblock content %}

@@ -1,16 +1,16 @@
 {% extends 'index.html' %}
 {% load bootstrap5 %}
-    {% block title %}Cadastro Carro {% endblock title %}
+    {% block title %}Aluguel SENAC - Atualizar Cliente {% endblock title %}
     {% block content %}
-    <h1>VCar</h1>
-    <h2>Cadastro de Carro:</h2>
+    <h1>Aluguel SENAC</h1>
+    <h2>Atualizar Cliente: {{ form.instance.clientes}}</h2>
 
-    <form action="cadastro"method="POST">
+    <form method="POST">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
     <button type="submit" class="btn btn-primary">
-      Cadastrar
+      Atualizar
     </button>
     {% endbuttons %}
     </form>

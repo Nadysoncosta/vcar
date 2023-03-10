@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Cliente(models.Model):
-    cpf = models.IntegerField(primary_key=True,unique=True)
+    cpf = models.IntegerField(primary_key=True)
     nome = models.CharField(max_length=100)
     telefone = models.IntegerField()
     data_nascimento=models.DateField()
@@ -14,18 +14,19 @@ class Cliente(models.Model):
         return "{} - {}".format(self.nome,self.cpf)
 
 class Carro(models.Model):
-    codigo =models.BigAutoField(primary_key=True,unique=True)
+    codigo_car =models.BigAutoField(primary_key=True)
     placa = models.CharField(max_length=15)
     ano = models.CharField(max_length=15)
+    marca=models.CharField(max_length=50)
     modelo = models.CharField(max_length=15)
     data_compra = models.DateField()
-    status = models.CharField(max_length=15)
+    status = models.BooleanField()
     
     def __str__(self):
         return "{}-{}".format(self.modelo,self.ano)
 
 class Aluguel(models.Model):
-    codigo=models.AutoField(primary_key=True,unique=True)
+    codigo=models.BigAutoField(primary_key=True)
     data_aluguel=models.DateField(blank=True)
     data_entrega=models.DateField(blank=True)
     diaria=models.DecimalField(max_digits = 10, decimal_places = 2)
